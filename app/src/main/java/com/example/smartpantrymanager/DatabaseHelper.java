@@ -63,6 +63,63 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
-    
+    public List<PantryItem> getPantry() {
+
+        List<PantryItem> items = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        try (Cursor c = db.rawQuery("SELECT * FROM pantry ORDER BY name", null)) {
+            while (c.moveToNext()) {
+                items.add(new PantryItem(
+                        c.getInt(c.getColumnIndexOrThrow("id")),
+                        c.getString(c.getColumnIndexOrThrow("name")),
+                        c.getDouble(c.getColumnIndexOrThrow("quantity")),
+                        c.getString(c.getColumnIndexOrThrow("unit")),
+                        c.getString(c.getColumnIndexOrThrow("expiry"))
+                ));
+            }
+        }
+        return items;
+    }
+
+    public PantryItem getIngredient(int id) {
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        try (Cursor c = db.rawQuery("SELECT * FROM pantry WHERE id=?",
+                new String[]{String.valueOf(id)})) {
+
+            if (c.moveToFirst()) {
+                return new PantryItem(
+                        c.getInt(c.getColumnIndexOrThrow("id")),
+                        c.getString(c.getColumnIndexOrThrow("name")),
+                        c.getDouble(c.getColumnIndexOrThrow("quantity")),
+                        c.getString(c.getColumnIndexOrThrow("unit")),
+                        c.getString(c.getColumnIndexOrThrow("expiry"))
+                );
+            }
+        }
+        return null;
+    }
+
+    public int updateIngredient(int id, String name, double quantity, String unit, String expiry) {
+
+        ContentValues values = new ContentValues();
+
+        values.put("name", name.trim());
+        values.put("quantity", quantity);
+        values.put("unit", unit.trim());
+        values.put("expiry", expiry);
+
+        return getWritableDatabase().update("pantry", values, "id=?",
+                new String[]{String.valueOf(id)});
+    }
+
+    public int deleteIngredient(int id) {
+
+        return getWritableDatabase().delete("pantry", "id=?",
+                new String[]{String.valueOf(id)});
+    }
+
 
 }
