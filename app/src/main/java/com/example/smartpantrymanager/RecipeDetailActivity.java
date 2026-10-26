@@ -52,5 +52,5 @@ public class RecipeDetailActivity extends Activity {
         super.onDestroy();
     }
 
-
+//
 }
