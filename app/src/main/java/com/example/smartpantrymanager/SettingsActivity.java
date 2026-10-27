@@ -24,6 +24,7 @@ public class SettingsActivity extends Activity {
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(20, 20, 20, 20);
+        layout.setFitsSystemWindows(true);
 
         TextView heading = new TextView(this);
         heading.setText("Settings");

@@ -35,6 +35,7 @@ public class AddEditIngredientActivity extends Activity{
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(20,20,20,20);
+        layout.setFitsSystemWindows(true);
 
         name = field("Ingredient name", layout);
         quantity=field("Quantity (e.g. 2)", layout);

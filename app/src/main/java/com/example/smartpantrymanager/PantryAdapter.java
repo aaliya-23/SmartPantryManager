@@ -29,6 +29,7 @@ public class PantryAdapter extends ArrayAdapter<PantryItem>{
         LinearLayout row= new LinearLayout(activity);
         row.setOrientation(LinearLayout.VERTICAL);
         row.setPadding(16,12,16,12);
+        row.setFitsSystemWindows(true);
 
         TextView name = new TextView(activity);
         name.setText(item.getName() + " - " + item.getQuantity() + " " +item.getUnit());

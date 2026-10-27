@@ -27,9 +27,12 @@ public class SuggestedRecipesActivity extends Activity {
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(16, 16, 16, 16);
+        layout.setFitsSystemWindows(true);
 
         TextView heading = new TextView(this);
         heading.setText("Suggested Recipes");
+        heading.setTypeface(null, android.graphics.Typeface.BOLD);
+        heading.setTextColor(Color.BLACK);
         heading.setTextSize(24);
         layout.addView(heading);
 

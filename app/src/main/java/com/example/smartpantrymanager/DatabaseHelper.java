@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
+import android.graphics.Typeface;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 

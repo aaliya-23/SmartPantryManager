@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
         heading.setText("Smart Pantry Manager");
         heading.setTextSize(24);
         heading.setTypeface(null, android.graphics.Typeface.BOLD);
+        heading.setTextColor(Color.BLACK);
         layout.addView(heading);
 
         TextView space = new TextView(this);
@@ -68,6 +69,7 @@ public class MainActivity extends Activity {
         label.setText("My Pantry");
         label.setTextSize(20);
         label.setTypeface(null, android.graphics.Typeface.BOLD);
+        label.setTextColor(Color.BLACK);
         layout.addView(label);
 
         ListView list = new ListView(this);
