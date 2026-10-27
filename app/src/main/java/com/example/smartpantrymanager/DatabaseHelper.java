@@ -12,7 +12,7 @@ import java.util.Locale;
 public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static final String DB_NAME = "smart_pantry.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     public DatabaseHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT NOT NULL, " +
                 "quantity REAL NOT NULL, "+
-                "unity TEXT NOT NULL, " +
+                "unit TEXT NOT NULL, " +
                 "expiry TEXT)");
 
         db.execSQL("CREATE TABLE recipes (" +
@@ -46,6 +46,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+
+        db.execSQL("DROP TABLE IF EXISTS recipe_ingredients");
+        db.execSQL("DROP TABLE IF EXISTS recipes");
+        db.execSQL("DROP TABLE IF EXISTS pantry");
+
+        onCreate(db);
 
     }
 
@@ -257,7 +263,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 int recipeId = recipes.getInt(0);
                 boolean canMake = true;
 
-                try(Cursor required = db.rawQuery("SELECT name, quantity, unti "+ "FROM recipe_ingredients WHERE recipeid=?",
+                try(Cursor required = db.rawQuery("SELECT name, quantity, unit "
+                                + "FROM recipe_ingredients WHERE recipe_id=?",
                         new String[]{String.valueOf(recipeId)})){
 
                     while (required.moveToNext()) {
