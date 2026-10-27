@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.List;
+import android.content.Intent;
+
 
 public class PantryAdapter extends ArrayAdapter<PantryItem>{
 

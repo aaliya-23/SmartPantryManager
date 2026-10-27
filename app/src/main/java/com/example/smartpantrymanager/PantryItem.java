@@ -19,23 +19,28 @@ public class PantryItem {
 
     }
 
-    public int getID(){
+    public int getId(){
+
         return id;
     }
 
     public String getName(){
+
         return name;
     }
 
     public double getQuantity(){
+
         return quantity;
     }
 
     public String getUnit(){
+
         return unit;
     }
 
     public String getExpiryDate(){
+
         return expiryDate;
     }
 

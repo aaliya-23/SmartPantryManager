@@ -339,7 +339,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "SELECT method FROM recipes WHERE id=?",
                 new String[]{String.valueOf(id)})){
             if(c.moveToFirst()){
-                details.append("METHOD\n").append(c.getString(0)).append("\n\nINGREDIENTS\n")
+                details.append("METHOD\n").append(c.getString(0)).append("\n\nINGREDIENTS\n");
             }
         }
 

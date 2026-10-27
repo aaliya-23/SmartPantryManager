@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
         TextView label = new TextView(this);
         label.setText("My Pantry");
         label.setTextSize(20);
-        label.addView(label);
+        layout.addView(label);
 
         ListView list = new ListView(this);
         adapter = new PantryAdapter(this, database.getPantry());
