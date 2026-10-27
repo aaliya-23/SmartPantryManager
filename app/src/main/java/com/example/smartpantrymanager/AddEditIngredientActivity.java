@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+
 public class AddEditIngredientActivity extends Activity{
 
     private DatabaseHelper database;
@@ -34,22 +37,25 @@ public class AddEditIngredientActivity extends Activity{
         layout.setPadding(20,20,20,20);
 
         name = field("Ingredient name", layout);
-        quantity=field("Quantity (e.g. 2", layout);
+        quantity=field("Quantity (e.g. 2)", layout);
         unit = field("Unit (e.g. pcs, ml, g)", layout);
         expiry = field("Expiry date (YYYY-MM-DD, optional)", layout);
 
         Button save = new Button(this);
         save.setText("Save Ingredient");
+        styleButton(save);
         save.setOnClickListener(v-> saveIngredient());
         layout.addView(save);
 
         Button delete = new Button(this);
         delete.setText("Delete Ingredient");
+        styleButton(delete);
         delete.setOnClickListener(v -> confirmDelete());
         layout.addView(delete);
 
         Button back = new Button(this);
         back.setText("Back");
+        styleButton(back);
         back.setOnClickListener(v-> finish());
         layout.addView(back);
 
@@ -72,6 +78,19 @@ public class AddEditIngredientActivity extends Activity{
             delete.setVisibility(View.GONE);
         }
 
+    }
+
+    private void styleButton(Button button) {
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(Color.rgb(220, 240, 220));
+        background.setCornerRadius(20);
+        background.setStroke(1, Color.rgb(170, 210, 170));
+
+        button.setBackground(background);
+        button.setTextColor(Color.rgb(40, 80, 40));
+        button.setTextSize(16);
+        button.setAllCaps(false);
+        button.setPadding(20, 12, 20, 12);
     }
 
     private EditText field(String hint, LinearLayout layout){

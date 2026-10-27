@@ -1,6 +1,8 @@
 package com.example.smartpantrymanager;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.ViewGroup;
@@ -65,10 +67,24 @@ public class SuggestedRecipesActivity extends Activity {
 
         Button back = new Button(this);
         back.setText("Back to Pantry");
+        styleButton(back);
         back.setOnClickListener(v -> finish());
         layout.addView(back);
 
         setContentView(layout);
+    }
+
+    private void styleButton(Button button){
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(Color.rgb(220, 240, 220));
+        background.setCornerRadius(20);
+        background.setStroke(1, Color.rgb(170, 210, 170));
+
+        button.setBackground(background);
+        button.setTextColor(Color.rgb(40, 80, 40));
+        button.setTextSize(16);
+        button.setAllCaps(false);
+        button.setPadding(20, 12, 20, 12);
     }
 
     @Override
