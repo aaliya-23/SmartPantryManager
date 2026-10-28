@@ -45,9 +45,7 @@ public class SettingsActivity extends Activity {
         layout.addView(alerts);
 
         TextView note = new TextView(this);
-        note.setText("This preference is saved on your device. " +
-                "Actual scheduled notifications are not implemented " +
-                "in this starter version.");
+        note.setText("This preference is saved on your device. ");
         layout.addView(note);
 
 
